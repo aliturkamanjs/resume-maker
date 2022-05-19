@@ -4,6 +4,7 @@ import { TemplateListPage } from './pages/TemplateListPage';
 import { BuildResumePage } from './pages/BuildResume';
 
 function App() {
+  
   return (
     <div className="App">
       <Routes>
