@@ -1,12 +1,10 @@
-import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 function Layout({ children }: any) {
   return (
-    <div className="max-w-7xl min-h-screen mx-auto relative flex flex-col items-center">
+    <div className=" min-h-screen mx-auto relative flex flex-col items-center justify-between">
       <Navbar />
       {children}
-      <Footer />
     </div>
   );
 }

@@ -1,29 +1,26 @@
-import exampleTemplate from "../svg/exampleTemplate.svg";
+import image from "../images/headerimg.png";
 
 export const HomePage = () => {
   return (
-    <div className="flex flex-col justify-evenly border-b-2 border-slate-500">
-      <div className="text-center flex flex-col items-center mt-8">
-        <p className="tracking-widest text-lg text-slate-400">
-          Free resume maker
-        </p>
-        <h1 className="text-center mx-auto font-medium text-3xl text-gray-800 mt-4">
-          <p>Only 2% of resumes make it past the first round</p>
-          <p>Be in the top 2%</p>
+    <div
+      className="flex flex-col items-center w-full h-screen"
+      style={{ background: "#D1D2F9" }}
+    >
+      <div className="flex flex-col items-center mt-12 text-center">
+        <h1 className="text-center text-4xl font-bold text-indigo-900 leading-snug flex flex-col">
+          Only 2% of resumes make it past the{" "}
+          <span> first round Be in the top 2%</span>
         </h1>
-        <p className=" text-slate-400 text-lg mt-2">
-          Use professionally tested resume templates
+        <p className="font-medium text-xl mt-6 text-indigo-900 flex flex-col">
+          Use professional field-tested resume templates that follow the{" "}
+          <span>exact ‘resume rules’ employers look for</span>
         </p>
-        <button className="w-40 h-11 font-medium bg-blue-500 text-white rounded-md mt-8 hover:bg-white border-2 border-blue-500 delay-150 duration-300 ease-in-out hover:text-blue-500">
+        <button className="w-36 h-11 mt-6 text-sm rounded-full font-medium duration-150 text-white bg-indigo-600 border-2 border-indigo-600 hover:bg-transparent hover:text-indigo-600">
           Create Resume
         </button>
       </div>
-      <div className="mt-12">
-        <img
-          src={exampleTemplate}
-          className="w-8/12 mx-auto border-x-2 border-t-2 border-slate-500 rounded-3xl rounded-b-none"
-          alt=""
-        />
+      <div className="mt-10 w-3/6">
+        <img src={image} alt="" />
       </div>
     </div>
   );

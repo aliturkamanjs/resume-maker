@@ -1,6 +1,5 @@
 import logo from "../svg/Logo.svg";
 import { Link } from "react-router-dom";
-import { BsGithub } from "react-icons/bs";
 
 function Navbar() {
   const items = [
@@ -11,13 +10,12 @@ function Navbar() {
 
   return (
     <div className="p-4 flex w-full justify-between items-center z-50">
-      <div className="flex">
+      <div className="flex items-center">
         <div className="flex items-center">
-          <div className="flex items-center">
-            <img src={logo} alt="" className="w-6" />
-            <p className="ml-2 font-medium text-xl text-slate-700">Resume</p>
-          </div>
-          <div className="border-l-2 h-6 ml-6"></div>
+          <Link to="/">
+            <img src={logo} alt="" className="w-8" />
+          </Link>
+          <p className="text-slate-700 font-medium ml-4">CV Maker</p>
         </div>
         <div className="flex">
           {items.map((item) => {
@@ -29,12 +27,9 @@ function Navbar() {
           })}
         </div>
       </div>
-      <div className="flex items-center">
-        <button className="w-24 h-9 bg-transparent border-2 text-blue-500 border-blue-500 font-medium rounded-lg">
-          Create
-        </button>
-        <BsGithub className="text-2xl ml-3" />
-      </div>
+      <button className="w-32 h-10 text-sm text-white bg-indigo-600 font-normal rounded-full">
+        Create Resume
+      </button>
     </div>
   );
 }

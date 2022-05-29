@@ -1,0 +1,35 @@
+@font-face {
+  font-family: vartaBold;
+  src: url("../fonts/Varta-Bold.ttf");
+}
+
+@font-face {
+  font-family: vartaSemiBold;
+  src: url("../fonts/Varta-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: vartaRegular;
+  src: url("../fonts/Varta-Regular.ttf");
+}
+
+@font-face {
+  font-family: vartaLight;
+  src: url("../fonts/Varta-Light.ttf");
+}
+
+.vartaBold {
+  font-family: vartaBold;
+}
+
+.vartaSemiBold {
+  font-family: vartaSemiBold;
+}
+
+.vartaRegular {
+  font-family: vartaRegular;
+}
+
+.vartaLight {
+  font-family: vartaLight;
+}
