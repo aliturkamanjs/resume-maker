@@ -1,3 +1,9 @@
+import Layout from "../layout/layout";
+
 export const AboutPage = () => {
-  return <div>this is about page</div>;
+  return (
+    <Layout>
+      <div>this is about page</div>
+    </Layout>
+  );
 };

@@ -3,3 +3,12 @@
 @tailwind utilities;
 
 @import url("./styles/fonts.css");
+@tailwind utilities;
+
+.text-dark {
+  color: #10141c;
+}
+
+.bg-dark {
+  background-color: #10141c;
+}
