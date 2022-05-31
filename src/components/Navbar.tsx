@@ -27,9 +27,11 @@ function Navbar() {
           })}
         </div>
       </div>
-      <button className="w-32 h-10 text-sm text-white bg-indigo-600 font-normal rounded-full">
-        Create Resume
-      </button>
+      <Link to="/build">
+        <button className="w-32 h-10 text-sm text-white bg-indigo-600 font-normal rounded-full hover:bg-indigo-700 duration-100">
+          Create Resume
+        </button>
+      </Link>
     </div>
   );
 }

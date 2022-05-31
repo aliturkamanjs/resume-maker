@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import image from "../images/headerimg.png";
 
 export const HomePage = () => {
@@ -15,9 +16,11 @@ export const HomePage = () => {
           Use professional field-tested resume templates that follow the{" "}
           <span>exact ‘resume rules’ employers look for</span>
         </p>
-        <button className="w-36 h-11 mt-6 text-sm rounded-full font-medium duration-150 text-white bg-indigo-600 border-2 border-indigo-600 hover:bg-transparent hover:text-indigo-600">
-          Create Resume
-        </button>
+        <Link to="/build">
+          <button className="w-36 h-11 mt-6 text-sm rounded-full font-medium duration-150 text-white bg-indigo-600 border-2 border-indigo-600 hover:bg-transparent hover:text-indigo-600">
+            Create Resume
+          </button>
+        </Link>
       </div>
       <div className="mt-10 w-3/6">
         <img src={image} alt="" />

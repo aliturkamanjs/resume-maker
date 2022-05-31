@@ -18,6 +18,16 @@
   src: url("../fonts/Varta-Light.ttf");
 }
 
+@font-face {
+  font-family: manjariBold;
+  src: url("../fonts/Manjari-Bold.ttf");
+}
+
+@font-face {
+  font-family: manjariRegular;
+  src: url("../fonts/Manjari-Regular.ttf");
+}
+
 .vartaBold {
   font-family: vartaBold;
 }
@@ -32,4 +42,12 @@
 
 .vartaLight {
   font-family: vartaLight;
+}
+
+.manjariBold {
+  font-family: manjariBold;
+}
+
+.manjariRegular {
+  font-family: manjariRegular;
 }
