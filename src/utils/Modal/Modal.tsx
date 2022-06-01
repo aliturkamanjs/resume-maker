@@ -8,11 +8,10 @@ interface propsType {
   title: string
   children: ReactNode
   saveChange: () => void
-  modalWidth: "sm" | "md" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl"
 }
 
 export const Modal = (props: propsType): JSX.Element => {
-  const { closeModal, isOpen, title, children, saveChange, modalWidth } = props
+  const { closeModal, isOpen, title, children, saveChange } = props
 
   return (
     <>
@@ -27,7 +26,7 @@ export const Modal = (props: propsType): JSX.Element => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
+            <div className="fixed inset-0 bg-slate-900 backdrop-blur-sm bg-opacity-25" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -41,12 +40,7 @@ export const Modal = (props: propsType): JSX.Element => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel
-                  className={clsx(
-                    "w-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
-                    , `max-w-${modalWidth}`
-                    )}
-                >
+                <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"

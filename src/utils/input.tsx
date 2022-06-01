@@ -36,7 +36,7 @@ export const Input = (props: inputTypes): JSX.Element => {
       </div>
       <input
         className={clsx(
-          `pl-3 py-1 w-full text-sm h-10 rounded-md bg-slate-100 text-slate-400 outline-none border transition border-slate-100 focus:border-blue-400`
+          `pl-3 py-1 w-full text-sm h-10 shadow-sm rounded-md bg-slate-100 text-slate-400 outline-none border transition border-slate-100 focus:border-blue-400`
         )}
         type={type}
         placeholder={placeholder}

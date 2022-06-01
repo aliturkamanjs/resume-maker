@@ -12,15 +12,11 @@ import { Modal } from "../../utils/Modal/Modal"
 
 export const Forms = (): JSX.Element => {
   const [showMoreDetail, setShowMoreDetails] = useState<boolean>(false)
-  const [isOpen, setIsOpen] = useState<boolean>(false)
-
-  const openModal = () => {
-    setIsOpen(true)
-  }
-
-  const closeModal = () => {
-    setIsOpen(false)
-  }
+  const [isOpenExperiences, setIsOpenExperiences] = useState<boolean>(false)
+  const [isOpenEducation, setIsOpenEducation] = useState<boolean>(false)
+  const [isOpenProjects, setIsOpenProjects] = useState<boolean>(false)
+  const [isOpenLinks, setIsOpenLinks] = useState<boolean>(false)
+  const [isOpenSkills, setIsOpenSkills] = useState<boolean>(false)
 
   return (
     <div>
@@ -86,7 +82,7 @@ export const Forms = (): JSX.Element => {
           best qualities and skills.
         </p>
         <textarea
-          className="bg-slate-100 my-5 w-full resize-none outline-none rounded-md p-3 text-sm"
+          className="bg-slate-100 my-5 w-full resize-none outline-none shadow-sm rounded-md p-3 text-sm"
           placeholder="e.g. Front developer with more than 8 years of experience..."
           name=""
           id=""
@@ -99,13 +95,12 @@ export const Forms = (): JSX.Element => {
         title="Work Experiences"
         desc="Show your relevant experience (last 10 years). Use bullet points to note your achievements, if possible - use numbers/facts (Achieved X, measured by Y, by doing Z)."
         btnTitle="Add experience"
-        handleClick={openModal}
+        handleClick={() => setIsOpenExperiences(true)}
       />
       <Modal
         title="Add experiences"
-        closeModal={closeModal}
-        isOpen={isOpen}
-        modalWidth="2xl"
+        closeModal={() => setIsOpenExperiences(false)}
+        isOpen={isOpenExperiences}
         children={
           <>
             <div className="flex w-full justify-between my-7">
@@ -123,19 +118,167 @@ export const Forms = (): JSX.Element => {
                   placeholder=""
                   width="47"
                 />
+                <Input title="" type="date" placeholder="" width="47" />
+              </div>
+              <Input title="City" type="text" placeholder="" width="47" />
+            </div>
+            <p className="text-xs mb-2 text-slate-500">Description</p>
+            <textarea
+              className="w-full bg-slate-100 mb-3 outline-none shadow-sm p-3 h-32 resize-none rounded-md text-sm"
+              placeholder="e.g. Graduated with High Honors."
+              name=""
+              id=""
+              cols={30}
+              rows={10}
+            ></textarea>
+          </>
+        }
+        saveChange={() => {
+          console.log("save changed Experiences")
+        }}
+      />
+
+      <AdditionalItems
+        title="Education"
+        desc="A varied education on your resume sums up the value that your learnings and background will bring to job."
+        btnTitle="Add education"
+        handleClick={() => setIsOpenLinks(true)}
+      />
+      <Modal
+        title="Add education"
+        closeModal={() => setIsOpenLinks(false)}
+        isOpen={isOpenLinks}
+        children={
+          <>
+            <div className="flex w-full justify-between my-7">
+              <Input title="School" type="text" placeholder="" width="47" />
+              <Input title="Degree" type="text" placeholder="" width="47" />
+            </div>
+            <div className="flex w-full justify-between my-7">
+              <div
+                className="flex w-full justify-between items-end"
+                style={{ width: "47%" }}
+              >
                 <Input
-                  title=""
+                  title="Start & End Date"
                   type="date"
                   placeholder=""
                   width="47"
                 />
+                <Input title="" type="date" placeholder="" width="47" />
               </div>
               <Input title="City" type="text" placeholder="" width="47" />
+            </div>
+            <p className="text-xs mb-2 text-slate-500">Description</p>
+            <textarea
+              className="w-full bg-slate-100 mb-3 outline-none shadow-sm p-3 h-32 resize-none rounded-md text-sm"
+              placeholder="e.g. Graduated with High Honors."
+              name=""
+              id=""
+              cols={30}
+              rows={10}
+            ></textarea>
+          </>
+        }
+        saveChange={() => {
+          console.log("save changed education")
+        }}
+      />
+
+      <AdditionalItems
+        title="Projects"
+        desc="You can add projects you wnat hiring managers to see! "
+        btnTitle="Add project"
+        handleClick={() => setIsOpenProjects(true)}
+      />
+      <Modal
+        title="Add projects"
+        closeModal={() => setIsOpenProjects(false)}
+        isOpen={isOpenProjects}
+        children={
+          <>
+            <div className="flex w-full justify-between my-7">
+              <Input
+                title="project subject"
+                type="text"
+                placeholder=""
+                width="47"
+              />
+              <Input title="City" type="text" placeholder="" width="47" />
+            </div>
+            <div className="flex w-full justify-between my-7">
+              <div
+                className="flex w-full justify-between items-end"
+                style={{ width: "47%" }}
+              >
+                <Input
+                  title="Start & End Date"
+                  type="date"
+                  placeholder=""
+                  width="47"
+                />
+                <Input title="" type="date" placeholder="" width="47" />
+              </div>
+            </div>
+            <p className="text-xs mb-2 text-slate-500">Description</p>
+            <textarea
+              className="w-full bg-slate-100 mb-3 outline-none shadow-sm p-3 h-32 resize-none rounded-md text-sm"
+              placeholder="e.g. Graduated with High Honors."
+              name=""
+              id=""
+              cols={30}
+              rows={10}
+            ></textarea>
+          </>
+        }
+        saveChange={() => {
+          console.log("save changed projects")
+        }}
+      />
+
+      <AdditionalItems
+        title="Websites & Social Links"
+        desc="You can add links to websites you want hiring managers to see! Perhaps It will be  a link to your portfolio, LinkedIn profile, or personal website"
+        btnTitle="Add link"
+        handleClick={() => setIsOpenEducation(true)}
+      />
+      <Modal
+        title="Add Websites & Social Links"
+        closeModal={() => setIsOpenEducation(false)}
+        isOpen={isOpenEducation}
+        children={
+          <>
+            <div className="flex w-full justify-between my-7">
+              <Input title="Label" type="text" placeholder="" width="47" />
+              <Input title="Link" type="link" placeholder="" width="47" />
             </div>
           </>
         }
         saveChange={() => {
-          console.log("save changed")
+          console.log("save changed Websites")
+        }}
+      />
+
+      <AdditionalItems
+        title="Skills"
+        desc="Choose 5 of the most important skills to show your talents! Make sure they match the keywords of the job listing if applying via an online system."
+        btnTitle="Add skills"
+        handleClick={() => setIsOpenSkills(true)}
+      />
+      <Modal
+        title="Add skills"
+        closeModal={() => setIsOpenSkills(false)}
+        isOpen={isOpenSkills
+        }
+        children={
+          <>
+            <div className="flex w-full justify-between my-7">
+              <Input title="skill" type="text" placeholder="" width="100" />
+            </div>
+          </>
+        }
+        saveChange={() => {
+          console.log("save changed Skills")
         }}
       />
     </div>
