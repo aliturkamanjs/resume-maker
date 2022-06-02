@@ -1,9 +1,10 @@
 import Layout from "../layout/layout";
+import TemplateThree from "../templates/template3";
 
 export const AboutPage = () => {
   return (
     <Layout>
-      <div>this is about page</div>
+      <TemplateThree />
     </Layout>
   );
 };

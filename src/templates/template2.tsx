@@ -17,12 +17,12 @@ function TemplateTwo() {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}
-      className="p-10 relative overflow-hidden border flex justify-center"
+      className="p-10 relative overflow-hidden flex justify-center"
     >
       <div style={{ width: "600px", height: "auto" }}>
         <div className="w-full flex flex-col justify-center items-center">
           <img
-            src="https://this-person-does-not-exist.com/img/avatar-bb089d07c353752bb8c8bfec4225cd51.jpg"
+            src="https://avatars.githubusercontent.com/u/79017406?v=4"
             alt=""
             className="w-32"
             style={{ borderRadius: "45px" }}
@@ -80,9 +80,7 @@ function TemplateTwo() {
             <div className="ml-2 pb-5">
               <p className="manjariBold text-2xl">Experience</p>
               <div className="mt-2">
-                <p className="manjariBold">
-                  Senior Prodct Designer at Figma
-                </p>
+                <p className="manjariBold">Senior Prodct Designer at Figma</p>
                 <p className="manjariRegular text-gray-400 text-sm">
                   Contrary to popular belief, Lorem Ipsum is not simply random
                   text. It has roots in a piece of classical Latin

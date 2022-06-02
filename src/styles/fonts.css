@@ -28,6 +28,31 @@
   src: url("../fonts/Manjari-Regular.ttf");
 }
 
+@font-face {
+  font-family: urbanistBlack;
+  src: url("../fonts/Urbanist-Black.ttf");
+}
+
+@font-face {
+  font-family: urbanistBold;
+  src: url("../fonts/Urbanist-Bold.ttf");
+}
+
+@font-face {
+  font-family: urbanistSemiBold;
+  src: url("../fonts/Urbanist-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: urbanistMedium;
+  src: url("../fonts/Urbanist-Medium.ttf");
+}
+
+@font-face {
+  font-family: syncopateBold;
+  src: url("../fonts/Syncopate-Bold.ttf");
+}
+
 .vartaBold {
   font-family: vartaBold;
 }
@@ -50,4 +75,24 @@
 
 .manjariRegular {
   font-family: manjariRegular;
+}
+
+.urbanistBlack {
+  font-family: urbanistBlack;
+}
+
+.urbanistBold {
+  font-family: urbanistBold;
+}
+
+.urbanistSemiBold {
+  font-family: urbanistSemiBold;
+}
+
+.urbanistMedium {
+  font-family: urbanistMedium;
+}
+
+.syncopateBold {
+  font-family: syncopateBold;
 }
