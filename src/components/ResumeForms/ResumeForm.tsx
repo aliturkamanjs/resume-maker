@@ -46,7 +46,7 @@ export const ResumeForm = (): JSX.Element => {
 
   return (
     <div className="w-5/6 min-h-screen bg-white pt-10 overflow-hidden">
-      <div className="px-14 pb-7">
+      <div className="px-10 pb-7">
         <h1
           className="text-center text-3xl text-slate-800 outline-none"
           contentEditable="true"
@@ -59,7 +59,7 @@ export const ResumeForm = (): JSX.Element => {
         <div ref={ProgressRef}>
           <Sticky topOffset={progressOffSetTop}>
             {({ style }) => (
-              <div className=" bg-white py-5" style={{ ...style, top: "0px" }}>
+              <div className=" bg-white backdrop-blur-md bg-opacity-80 py-5" style={{ ...style, top: "0px", zIndex: '10' }}>
                 <div className="flex items-center text-xs mb-2">
                   <span className={`block mr-1 ${progressStatus.text}`}>
                     {range}%
