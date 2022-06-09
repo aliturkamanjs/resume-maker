@@ -1,11 +1,11 @@
-import { HiArrowNarrowRight } from "react-icons/hi";
+import { HiArrowNarrowRight } from "react-icons/hi"
 
 function TemplateOne() {
   const ContactItems = [
     { name: "Ali@gmail.com" },
     { name: "vancouver, BC" },
     { name: "(512) 465-6312" },
-  ];
+  ]
 
   const ExperinceItems = [
     {
@@ -22,7 +22,7 @@ function TemplateOne() {
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     },
-  ];
+  ]
 
   const ProjectsItems = [
     {
@@ -38,7 +38,7 @@ function TemplateOne() {
       description:
         "Pcode lets you create and share beautiful images of your source code",
     },
-  ];
+  ]
 
   const SkillsItems = [
     { name: "python", id: 1 },
@@ -49,17 +49,17 @@ function TemplateOne() {
     { name: "mongodb", id: 6 },
     { name: "react native", id: 7 },
     { name: "deno", id: 8 },
-  ];
+  ]
 
   const LangItems = [
     { name: "English", id: 1 },
     { name: "Spanish", id: 2 },
     { name: "French", id: 3 },
-  ];
+  ]
 
   return (
     <div
-      style={{ width: "800px", height: "1000px" }}
+      style={{ width: "100%", height: "1000px", background: "#f8fafd" }}
       className="p-10 relative overflow-hidden"
     >
       <div className="w-96 h-96 bg-blue-500 opacity-10 blur-3xl absolute left-0 top-0 z-10"></div>
@@ -80,7 +80,7 @@ function TemplateOne() {
           {ContactItems.map((item) => {
             return (
               <p className="text-slate-400 mt-1 vartaRegular">{item.name}</p>
-            );
+            )
           })}
         </div>
       </div>
@@ -109,7 +109,7 @@ function TemplateOne() {
                 {item.description}
               </p>
             </div>
-          );
+          )
         })}
       </div>
       <div className="mt-8">
@@ -137,11 +137,11 @@ function TemplateOne() {
                       </a>
                       <HiArrowNarrowRight />
                     </div>
-                  );
+                  )
                 })}
               </p>
             </div>
-          );
+          )
         })}
       </div>
       <div className="mt-8">
@@ -156,7 +156,7 @@ function TemplateOne() {
                 {`// `}
                 {item.name}
               </p>
-            );
+            )
           })}
         </div>
       </div>
@@ -169,12 +169,12 @@ function TemplateOne() {
                 {`// `}
                 {item.name}
               </p>
-            );
+            )
           })}
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default TemplateOne;
+export default TemplateOne

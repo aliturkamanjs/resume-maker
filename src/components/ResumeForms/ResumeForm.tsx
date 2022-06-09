@@ -59,7 +59,10 @@ export const ResumeForm = (): JSX.Element => {
         <div ref={ProgressRef}>
           <Sticky topOffset={progressOffSetTop}>
             {({ style }) => (
-              <div className=" bg-white backdrop-blur-md bg-opacity-80 py-5" style={{ ...style, top: "0px", zIndex: '10' }}>
+              <div
+                className="bg-white backdrop-blur-md bg-opacity-80 py-5"
+                style={{ ...style, top: "0px", zIndex: "10" }}
+              >
                 <div className="flex items-center text-xs mb-2">
                   <span className={`block mr-1 ${progressStatus.text}`}>
                     {range}%

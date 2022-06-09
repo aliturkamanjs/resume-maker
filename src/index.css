@@ -12,3 +12,12 @@
 .bg-dark {
   background-color: #10141c;
 }
+
+.overflow-hidden::-webkit-scrollbar {
+  width: 8px;
+  background: rgb(139, 139, 139);
+}
+
+.overflow-hidden::-webkit-scrollbar-thumb {
+  background: #666;
+}

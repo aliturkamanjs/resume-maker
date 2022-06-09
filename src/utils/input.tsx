@@ -1,22 +1,33 @@
-import clsx from "clsx"
+import clsx from "clsx";
+import { ChangeEvent } from "react";
 
-import { BsQuestionCircle } from "react-icons/bs"
-import { Tooltip } from "./tooltip"
+import { BsQuestionCircle } from "react-icons/bs";
+import { Tooltip } from "./tooltip";
 
 interface inputTypes {
-  title?: string
-  type?: string
-  placeholder?: string
-  value?: string
-  width?: string
-  rest?: any
-  tooltipTitle?: string
+  name?: string,
+  title?: string;
+  type?: string;
+  placeholder?: string;
+  value?: string;
+  width?: string;
+  rest?: any;
+  tooltipTitle?: string;
+  onChange?: (e: ChangeEvent<any>) => void;
 }
 
 export const Input = (props: inputTypes): JSX.Element => {
-  const { title, type, placeholder, width, value, tooltipTitle, ...rest } =
-    props
-
+  const {
+    name,
+    title,
+    type,
+    placeholder,
+    width,
+    value,
+    tooltipTitle,
+    onChange,
+    ...rest
+  } = props;
 
   return (
     <div style={{ width: `${width}%` }}>
@@ -41,9 +52,10 @@ export const Input = (props: inputTypes): JSX.Element => {
         type={type}
         placeholder={placeholder}
         value={value}
-        name={title}
+        name={name}
+        onChange={onChange}
         {...rest}
       />
     </div>
-  )
-}
+  );
+};

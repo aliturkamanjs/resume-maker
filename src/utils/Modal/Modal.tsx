@@ -1,17 +1,17 @@
-import { Dialog, Transition } from "@headlessui/react"
-import clsx from "clsx"
-import React, { Fragment, ReactNode } from "react"
+import { Dialog, Transition } from "@headlessui/react";
+import clsx from "clsx";
+import React, { Fragment, ReactNode } from "react";
 
 interface propsType {
-  closeModal: () => void
-  isOpen: boolean | undefined
-  title: string
-  children: ReactNode
-  saveChange: () => void
+  closeModal: () => void;
+  isOpen: boolean | undefined;
+  title: string;
+  children: ReactNode;
+  saveChange: () => void;
 }
 
 export const Modal = (props: propsType): JSX.Element => {
-  const { closeModal, isOpen, title, children, saveChange } = props
+  const { closeModal, isOpen, title, children, saveChange } = props;
 
   return (
     <>
@@ -58,6 +58,7 @@ export const Modal = (props: propsType): JSX.Element => {
                       </button>
                       <button
                         onClick={saveChange}
+                        type="submit"
                         className="px-4 py-2 text-xs rounded-md bg-indigo-600 text-slate-50 hover:bg-indigo-700"
                       >
                         Save changes
@@ -71,5 +72,5 @@ export const Modal = (props: propsType): JSX.Element => {
         </Dialog>
       </Transition>
     </>
-  )
-}
+  );
+};
