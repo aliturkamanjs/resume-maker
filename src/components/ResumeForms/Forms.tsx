@@ -28,14 +28,18 @@ import { AdditionalItems } from "../../utils/AdditionalItems/AdditionalItems"
 import { Modal } from "../../utils/Modal/Modal"
 import { Formik } from "formik"
 import { useDispatch } from "react-redux"
-
+import toast from "react-hot-toast"
+import * as Yup from "yup"
 
 export const Forms = (): JSX.Element => {
   const dispatch = useDispatch()
 
-  const [showMoreDetail, setShowMoreDetails] = useState<boolean>(false)
-  const [isOpenExperiences, setIsOpenExperiences] = useState<boolean>(false)
-  const [isOpenEducation, setIsOpenEducation] = useState<boolean>(false)
+  const [showMoreDetail, setShowMoreDetails] =
+    useState<boolean>(false)
+  const [isOpenExperiences, setIsOpenExperiences] =
+    useState<boolean>(false)
+  const [isOpenEducation, setIsOpenEducation] =
+    useState<boolean>(false)
   const [isOpenProjects, setIsOpenProjects] = useState<boolean>(false)
   const [isOpenLinks, setIsOpenLinks] = useState<boolean>(false)
   const [isOpenSkills, setIsOpenSkills] = useState<boolean>(false)
@@ -44,10 +48,14 @@ export const Forms = (): JSX.Element => {
 
   return (
     <div>
-      <h1 className="text-base text-slate-800 mb-6">Personal Details</h1>
+      <h1 className="text-base text-slate-800 mb-6">
+        Personal Details
+      </h1>
       <Formik
         initialValues={initialPersonalDetailsValues}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => {
+          // do something
+        }}
       >
         {({ values, handleChange, submitForm }) => (
           <form
@@ -112,7 +120,10 @@ export const Forms = (): JSX.Element => {
               />
             </div>
             {showMoreDetail ? (
-              <AdditionalDetails onChange={handleChange} values={values} />
+              <AdditionalDetails
+                onChange={handleChange}
+                values={values}
+              />
             ) : null}
             <div
               className="flex items-center text-sm mt-4 text-blue-500 cursor-pointer"
@@ -124,16 +135,22 @@ export const Forms = (): JSX.Element => {
                   : "Edit additional details "}
               </span>
               <FiChevronDown
-                className={clsx("text-xl", showMoreDetail ? "rotate-180" : "")}
+                className={clsx(
+                  "text-xl",
+                  showMoreDetail ? "rotate-180" : ""
+                )}
               />
             </div>
 
             <div className="mt-5">
-              <h1 className="text-base text-slate-800 mb-1">About yourself</h1>
+              <h1 className="text-base text-slate-800 mb-1">
+                About yourself
+              </h1>
               <p className="text-xs text-slate-500">
-                Write 2-4 short & energetic sentences to interest the reader!
-                Mention your role, experience & most importantly - your biggest
-                achievements, best qualities and skills.
+                Write 2-4 short & energetic sentences to interest the
+                reader! Mention your role, experience & most
+                importantly - your biggest achievements, best
+                qualities and skills.
               </p>
               <textarea
                 className="bg-slate-100 my-5 w-full resize-none outline-none shadow-sm rounded-md p-3 text-sm"
@@ -152,9 +169,26 @@ export const Forms = (): JSX.Element => {
 
       <Formik
         initialValues={initialExpValues}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => {
+          // do something
+        }}
+        validationSchema={Yup.object().shape({
+          jobTitle: Yup.string().required(),
+          company: Yup.string().required(),
+          startDate: Yup.string(),
+          endDate: Yup.string(),
+          city: Yup.string(),
+          desc: Yup.string(),
+        })}
       >
-        {({ values, handleChange, handleSubmit }) => (
+        {({
+          values,
+          handleChange,
+          handleSubmit,
+          handleReset,
+          handleBlur,
+          isValid,
+        }) => (
           <>
             <AdditionalItems
               title="Work Experiences"
@@ -166,6 +200,7 @@ export const Forms = (): JSX.Element => {
               title="Add experiences"
               closeModal={() => setIsOpenExperiences(false)}
               isOpen={isOpenExperiences}
+              disabled={!isValid}
               children={
                 <>
                   <div className="flex w-full justify-between my-7">
@@ -175,6 +210,7 @@ export const Forms = (): JSX.Element => {
                       name="jobTitle"
                       onChange={handleChange}
                       value={values.jobTitle}
+                      onBlur={handleBlur}
                       placeholder=""
                       width="47"
                     />
@@ -184,6 +220,7 @@ export const Forms = (): JSX.Element => {
                       name="company"
                       onChange={handleChange}
                       value={values.company}
+                      onBlur={handleBlur}
                       placeholder=""
                       width="47"
                     />
@@ -199,6 +236,7 @@ export const Forms = (): JSX.Element => {
                         name="startDate"
                         onChange={handleChange}
                         value={values.startDate}
+                        onBlur={handleBlur}
                         placeholder=""
                         width="47"
                       />
@@ -208,6 +246,7 @@ export const Forms = (): JSX.Element => {
                         name="endDate"
                         onChange={handleChange}
                         value={values.endDate}
+                        onBlur={handleBlur}
                         placeholder=""
                         width="47"
                       />
@@ -218,11 +257,14 @@ export const Forms = (): JSX.Element => {
                       name="city"
                       onChange={handleChange}
                       value={values.city}
+                      onBlur={handleBlur}
                       placeholder=""
                       width="47"
                     />
                   </div>
-                  <p className="text-xs mb-2 text-slate-500">Description</p>
+                  <p className="text-xs mb-2 text-slate-500">
+                    Description
+                  </p>
                   <textarea
                     className="w-full bg-slate-100 mb-3 outline-none shadow-sm p-3 h-32 resize-none rounded-md text-sm"
                     placeholder="e.g. Graduated with High Honors."
@@ -230,6 +272,7 @@ export const Forms = (): JSX.Element => {
                     id=""
                     onChange={handleChange}
                     value={values.desc}
+                    onBlur={handleBlur}
                     cols={30}
                     rows={10}
                   ></textarea>
@@ -238,6 +281,8 @@ export const Forms = (): JSX.Element => {
               saveChange={() => {
                 handleSubmit()
                 dispatch({ type: WORK_EXPERIENCES, payload: values })
+                handleReset()
+                toast.success("Your experiences has been added")
               }}
             />
           </>
@@ -246,9 +291,26 @@ export const Forms = (): JSX.Element => {
 
       <Formik
         initialValues={initialEduValues}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => {
+          // do something
+        }}
+        validationSchema={Yup.object().shape({
+          school: Yup.string().required(),
+          degree: Yup.string().required(),
+          startDate: Yup.string(),
+          endDate: Yup.string(),
+          city: Yup.string(),
+          desc: Yup.string(),
+        })}
       >
-        {({ values, handleChange, handleSubmit }) => (
+        {({
+          values,
+          handleChange,
+          handleSubmit,
+          handleReset,
+          handleBlur,
+          isValid,
+        }) => (
           <>
             <AdditionalItems
               title="Education"
@@ -260,6 +322,7 @@ export const Forms = (): JSX.Element => {
               title="Add education"
               closeModal={() => setIsOpenLinks(false)}
               isOpen={isOpenLinks}
+              disabled={!isValid}
               children={
                 <>
                   <div className="flex w-full justify-between my-7">
@@ -269,6 +332,7 @@ export const Forms = (): JSX.Element => {
                       name="school"
                       onChange={handleChange}
                       value={values.school}
+                      onBlur={handleBlur}
                       placeholder=""
                       width="47"
                     />
@@ -278,6 +342,7 @@ export const Forms = (): JSX.Element => {
                       name="degree"
                       onChange={handleChange}
                       value={values.degree}
+                      onBlur={handleBlur}
                       placeholder=""
                       width="47"
                     />
@@ -293,6 +358,7 @@ export const Forms = (): JSX.Element => {
                         name="startDate"
                         onChange={handleChange}
                         value={values.startDate}
+                        onBlur={handleBlur}
                         placeholder=""
                         width="47"
                       />
@@ -302,6 +368,7 @@ export const Forms = (): JSX.Element => {
                         name="endDate"
                         onChange={handleChange}
                         value={values.endDate}
+                        onBlur={handleBlur}
                         placeholder=""
                         width="47"
                       />
@@ -312,11 +379,14 @@ export const Forms = (): JSX.Element => {
                       name="city"
                       onChange={handleChange}
                       value={values.city}
+                      onBlur={handleBlur}
                       placeholder=""
                       width="47"
                     />
                   </div>
-                  <p className="text-xs mb-2 text-slate-500">Description</p>
+                  <p className="text-xs mb-2 text-slate-500">
+                    Description
+                  </p>
                   <textarea
                     className="w-full bg-slate-100 mb-3 outline-none shadow-sm p-3 h-32 resize-none rounded-md text-sm"
                     placeholder="e.g. Graduated with High Honors."
@@ -324,6 +394,7 @@ export const Forms = (): JSX.Element => {
                     id=""
                     onChange={handleChange}
                     value={values.desc}
+                    onBlur={handleBlur}
                     cols={30}
                     rows={10}
                   ></textarea>
@@ -332,6 +403,8 @@ export const Forms = (): JSX.Element => {
               saveChange={() => {
                 handleSubmit()
                 dispatch({ type: EDUCATIONS, payload: values })
+                handleReset()
+                toast.success("Your education has been added")
               }}
             />
           </>
@@ -340,9 +413,24 @@ export const Forms = (): JSX.Element => {
 
       <Formik
         initialValues={initailProjValues}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => {
+          // do something
+        }}
+        validationSchema={Yup.object().shape({
+          projectSubject: Yup.string().required(),
+          startDate: Yup.string(),
+          endDate: Yup.string(),
+          desc: Yup.string(),
+        })}
       >
-        {({ values, handleChange, handleSubmit }) => (
+        {({
+          values,
+          handleChange,
+          handleSubmit,
+          handleReset,
+          handleBlur,
+          isValid,
+        }) => (
           <>
             <AdditionalItems
               title="Projects"
@@ -354,17 +442,19 @@ export const Forms = (): JSX.Element => {
               title="Add projects"
               closeModal={() => setIsOpenProjects(false)}
               isOpen={isOpenProjects}
+              disabled={!isValid}
               children={
                 <>
                   <div className="flex w-full justify-between my-7">
                     <Input
-                      title="project subject"
+                      title="Project title"
                       type="text"
                       name="projectSubject"
                       onChange={handleChange}
                       value={values.projectSubject}
                       placeholder=""
                       width="100"
+                      onBlur={handleBlur}
                     />
                   </div>
                   <div className="flex w-full justify-between my-7">
@@ -380,6 +470,7 @@ export const Forms = (): JSX.Element => {
                         value={values.startDate}
                         placeholder=""
                         width="47"
+                        onBlur={handleBlur}
                       />
                       <Input
                         title=""
@@ -389,10 +480,13 @@ export const Forms = (): JSX.Element => {
                         value={values.endDate}
                         placeholder=""
                         width="47"
+                        onBlur={handleBlur}
                       />
                     </div>
                   </div>
-                  <p className="text-xs mb-2 text-slate-500">Description</p>
+                  <p className="text-xs mb-2 text-slate-500">
+                    Description
+                  </p>
                   <textarea
                     className="w-full bg-slate-100 mb-3 outline-none shadow-sm p-3 h-32 resize-none rounded-md text-sm"
                     placeholder="e.g. Graduated with High Honors."
@@ -402,12 +496,15 @@ export const Forms = (): JSX.Element => {
                     value={values.desc}
                     cols={30}
                     rows={10}
+                    onBlur={handleBlur}
                   ></textarea>
                 </>
               }
               saveChange={() => {
                 handleSubmit()
                 dispatch({ type: PROJECTS, payload: values })
+                handleReset()
+                toast.success("Your project has been added")
               }}
             />
           </>
@@ -416,9 +513,23 @@ export const Forms = (): JSX.Element => {
 
       <Formik
         initialValues={initialLinksValue}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => {
+          // do something
+        }}
+        validationSchema={Yup.object().shape({
+          label: Yup.string().required("label is requred"),
+          link: Yup.string().required("link is requred"),
+        })}
       >
-        {({ values, handleChange, handleSubmit }) => (
+        {({
+          values,
+          handleChange,
+          handleSubmit,
+          handleReset,
+          errors,
+          handleBlur,
+          isValid,
+        }) => (
           <>
             <AdditionalItems
               title="Websites & Social Links"
@@ -430,6 +541,7 @@ export const Forms = (): JSX.Element => {
               title="Add Websites & Social Links"
               closeModal={() => setIsOpenEducation(false)}
               isOpen={isOpenEducation}
+              disabled={!isValid}
               children={
                 <>
                   <div className="flex w-full justify-between my-7">
@@ -441,6 +553,7 @@ export const Forms = (): JSX.Element => {
                       value={values.label}
                       placeholder=""
                       width="47"
+                      onBlur={handleBlur}
                     />
                     <Input
                       title="Link"
@@ -450,6 +563,7 @@ export const Forms = (): JSX.Element => {
                       value={values.link}
                       placeholder=""
                       width="47"
+                      onBlur={handleBlur}
                     />
                   </div>
                 </>
@@ -457,6 +571,8 @@ export const Forms = (): JSX.Element => {
               saveChange={() => {
                 handleSubmit()
                 dispatch({ type: LINKS, payload: values })
+                handleReset()
+                toast.success("Your link has been added")
               }}
             />
           </>
@@ -465,9 +581,22 @@ export const Forms = (): JSX.Element => {
 
       <Formik
         initialValues={initialSkillValue}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => {
+          // do something
+        }}
+        validationSchema={Yup.object().shape({
+          skill: Yup.string().required("skill is requred"),
+        })}
       >
-        {({ values, handleChange, handleSubmit }) => (
+        {({
+          values,
+          handleChange,
+          handleSubmit,
+          handleReset,
+          errors,
+          handleBlur,
+          isValid,
+        }) => (
           <>
             <AdditionalItems
               title="Skills"
@@ -479,6 +608,7 @@ export const Forms = (): JSX.Element => {
               title="Add skills"
               closeModal={() => setIsOpenSkills(false)}
               isOpen={isOpenSkills}
+              disabled={!isValid}
               children={
                 <>
                   <div className="flex w-full justify-between my-7">
@@ -490,6 +620,7 @@ export const Forms = (): JSX.Element => {
                       value={values.skill}
                       placeholder=""
                       width="100"
+                      onBlur={handleBlur}
                     />
                   </div>
                 </>
@@ -497,6 +628,8 @@ export const Forms = (): JSX.Element => {
               saveChange={() => {
                 handleSubmit()
                 dispatch({ type: SKILLS, payload: values })
+                handleReset()
+                toast.success("Your skill has been added")
               }}
             />
           </>

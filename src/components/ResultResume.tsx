@@ -5,7 +5,7 @@ import TemplateOne from "../templates/template1"
 import { useSelector } from "react-redux"
 
 export const ResultResume = (): JSX.Element => {
-  const state = useSelector((state) => state)
+  const state = useSelector((state : any) => state)
 
   // console.log(state)
 
@@ -23,10 +23,10 @@ export const ResultResume = (): JSX.Element => {
               </span>
             </Link>
             <div
-              style={{ width: "80%", height: "90%", overflowY: "scroll" }}
-              className="overflow-hidden rounded-md"
+              style={{ width: "500px", height: "550px", aspectRatio: "4 / 6" }}
+              className="overflow-hidden rounded-md "
             >
-              <TemplateOne />
+              <TemplateOne state={state} />
             </div>
           </div>
         )}

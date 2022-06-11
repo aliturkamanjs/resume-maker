@@ -11,9 +11,10 @@ interface inputTypes {
   placeholder?: string;
   value?: string;
   width?: string;
-  rest?: any;
   tooltipTitle?: string;
   onChange?: (e: ChangeEvent<any>) => void;
+  rest?: any
+  onBlur?: any
 }
 
 export const Input = (props: inputTypes): JSX.Element => {
@@ -26,6 +27,7 @@ export const Input = (props: inputTypes): JSX.Element => {
     value,
     tooltipTitle,
     onChange,
+    onBlur,
     ...rest
   } = props;
 
@@ -54,6 +56,7 @@ export const Input = (props: inputTypes): JSX.Element => {
         value={value}
         name={name}
         onChange={onChange}
+        onBlur={onBlur}
         {...rest}
       />
     </div>

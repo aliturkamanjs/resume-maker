@@ -1,22 +1,34 @@
-import { Dialog, Transition } from "@headlessui/react";
-import clsx from "clsx";
-import React, { Fragment, ReactNode } from "react";
+import { Dialog, Transition } from "@headlessui/react"
+import clsx from "clsx"
+import React, { Fragment, ReactNode } from "react"
 
 interface propsType {
-  closeModal: () => void;
-  isOpen: boolean | undefined;
-  title: string;
-  children: ReactNode;
-  saveChange: () => void;
+  closeModal: () => void
+  isOpen: boolean | undefined
+  title: string
+  disabled?: boolean
+  children: ReactNode
+  saveChange: () => void
 }
 
 export const Modal = (props: propsType): JSX.Element => {
-  const { closeModal, isOpen, title, children, saveChange } = props;
+  const {
+    closeModal,
+    isOpen,
+    title,
+    children,
+    saveChange,
+    disabled,
+  } = props
 
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+        <Dialog
+          as="div"
+          className="relative z-10"
+          onClose={closeModal}
+        >
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -57,9 +69,10 @@ export const Modal = (props: propsType): JSX.Element => {
                         Cancel
                       </button>
                       <button
+                        disabled={disabled}
                         onClick={saveChange}
                         type="submit"
-                        className="px-4 py-2 text-xs rounded-md bg-indigo-600 text-slate-50 hover:bg-indigo-700"
+                        className="px-4 py-2 text-xs rounded-md bg-indigo-600 text-slate-50 hover:bg-indigo-700 disabled:bg-slate-400 disabled:cursor-not-allowed"
                       >
                         Save changes
                       </button>
@@ -72,5 +85,5 @@ export const Modal = (props: propsType): JSX.Element => {
         </Dialog>
       </Transition>
     </>
-  );
-};
+  )
+}

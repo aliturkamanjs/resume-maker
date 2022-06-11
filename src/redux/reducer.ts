@@ -1,26 +1,43 @@
-import { useState } from "react"
+const initialState = {
+  skills: [],
+  links: [],
+  projects: [],
+  education: [],
+  experiences: [],
+  personalDetail: {},
+}
 
-const initialState = {}
-
-export const reducer = (state = initialState, action: any) => {
+export const reducer = (state = initialState, action: any): any => {
   switch (action.type) {
     case "PERSONAL_DETAILS":
-      return { ...state }
+      return {
+        ...state,
+        personalDetail: [action.payload],
+      }
 
     case "WORK_EXPERIENCES":
-      return { ...state }
+      return {
+        ...state,
+        experiences: [...state.experiences, action.payload],
+      }
 
     case "EDUCATIONS":
-      return { ...state }
+      return {
+        ...state,
+        education: [...state.education, action.payload],
+      }
 
     case "PROJECTS":
-      return { ...state }
+      return {
+        ...state,
+        projects: [...state.projects, action.payload],
+      }
 
     case "LINKS":
-      return { ...state }
+      return { ...state, links: [...state.links, action.payload] }
 
     case "SKILLS":
-      return { ...state }
+      return { ...state, skills: [...state.skills, action.payload] }
 
     default:
       return state

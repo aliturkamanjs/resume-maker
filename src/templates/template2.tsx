@@ -4,7 +4,6 @@ import TitleIcon from "../utils/TitleIcon";
 function TemplateTwo() {
   function randomColorGenerator() {
     const randomColor = "#" + Math.floor(Math.random() * 12345678).toString(16);
-    console.log(randomColor);
     return randomColor;
   }
 

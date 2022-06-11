@@ -13,10 +13,11 @@ interface ProgressStatusType {
 export const ResumeForm = (): JSX.Element => {
   const [range, setRange] = useState<number>(80)
   const [progressOffSetTop, setProgressOffSetTop] = useState<number>()
-  const [progressStatus, setProgressStatus] = useState<ProgressStatusType>({
-    text: "",
-    bg: "",
-  })
+  const [progressStatus, setProgressStatus] =
+    useState<ProgressStatusType>({
+      text: "",
+      bg: "",
+    })
   const ProgressRef = useRef<any>(null)
 
   useEffect(() => {
@@ -47,10 +48,7 @@ export const ResumeForm = (): JSX.Element => {
   return (
     <div className="w-5/6 min-h-screen bg-white pt-10 overflow-hidden">
       <div className="px-10 pb-7">
-        <h1
-          className="text-center text-3xl text-slate-800 outline-none"
-          contentEditable="true"
-        >
+        <h1 className="text-center text-3xl text-slate-800 outline-none">
           Untitled
         </h1>
         <div className="text-center">
@@ -64,13 +62,20 @@ export const ResumeForm = (): JSX.Element => {
                 style={{ ...style, top: "0px", zIndex: "10" }}
               >
                 <div className="flex items-center text-xs mb-2">
-                  <span className={`block mr-1 ${progressStatus.text}`}>
+                  <span
+                    className={`block mr-1 ${progressStatus.text}`}
+                  >
                     {range}%
                   </span>{" "}
-                  <p className="text-slate-400">Profile completeness</p>
+                  <p className="text-slate-400">
+                    Profile completeness
+                  </p>
                 </div>
 
-                <Progress range={range} progressStatus={progressStatus} />
+                <Progress
+                  range={range}
+                  progressStatus={progressStatus}
+                />
               </div>
             )}
           </Sticky>
